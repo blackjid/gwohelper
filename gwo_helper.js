@@ -84,9 +84,9 @@ GWO_helper = {
      */
     track: function(_experiment, _type){
 	
-	if(!this.debug)
-	     if(_type == "test" || _type == "goal")
-		 _gaq.push(['gwo._trackPageview', '/' + this.experiments[_experiment].id + '/' + _type]);
+		if(!this.debug)
+			 if(_type == "test" || _type == "goal")
+			 _gaq.push(['gwo._trackPageview', '/' + this.experiments[_experiment].id + '/' + _type]);
 
     },
     
@@ -97,9 +97,11 @@ GWO_helper = {
     _loadTracking: function(){
         
         if(!document.getElementById("GWO_trackingScript")){
+		
             // GOOGLE TRACKING SCRIPT
-            var _gaq = _gaq || [];
-            _gaq.push(['gwo._setAccount', this.account]);
+            window._gaq = window._gaq || [];
+            window._gaq.push(['gwo._setAccount', this.account]);
+			
             (function() {
                 var ga = document.createElement('script');ga.type = 'text/javascript';ga.async = true;
                 ga.id = "GWO_trackingScript";
