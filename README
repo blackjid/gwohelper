@@ -1,0 +1,17 @@
+Google Web Optimizer Multi Experiment Helper
+===================================
+
+This helper allow you to load dynamically the control script and the tracking script provided by GWO, as well to push the tracking beacon for the start of the experiment and for the goal.
+
+It also provides a way to make changes to the page based on the experiments variants setted by GWO.
+
+This can be done using CSS or javascript.
+
+Setup
+====
+
+
+Dealing with GWO interface to create the variations
+=====================================
+
+
