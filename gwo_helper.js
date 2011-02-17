@@ -18,12 +18,12 @@ GWO_helper = {
         example1: {
             id: "0000000000", /* GWO experiment id */
             sections: [{name: 'section1'}, {name: 'sectio2'}],  /* Section Names */
-            resolved: false
+            combination: undefined
         },
         example2: {   
             id: "0000000001",
             sections: [{name: 'section1'},{name: 'section2'}], 
-            resolved: false          
+            combination: undefined          
         }
     },
     
@@ -131,8 +131,8 @@ GWO_helper = {
             this.experiments[_experiment].sections[i].variation = utmx("variation_number", this.experiments[_experiment].sections[i].name);
         }
         
-        // Set the experiment as resolved
-        this.experiments[_experiment].resolved = true;
+        // Set the combination for this experiment
+        this.experiments[_experiment].combination = utmx("combination");
         
         // ADD CLASS TO THE BODY  state-test(experiment)_(section)-(variation)
         var b = document.getElementsByTagName("body")[0];
