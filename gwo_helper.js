@@ -17,7 +17,7 @@ GWO_helper = {
     experiments: {
         example1: {
             id: "0000000000", /* GWO experiment id */
-            sections: [{name: 'section1'}, {name: 'sectio2'}]  /* Section Names */
+            sections: [{name: 'section1'}, {name: 'section2'}]  /* Section Names */
         },
         example2: {   
             id: "0000000001",
@@ -114,7 +114,7 @@ GWO_helper = {
         // DEBUG
         console.log("******************************************************************");
         console.log("LOADED EXPERIMENT" + _experiment, this.experiments[_experiment]);
-        console.log("TEST COMBINATION", utmx("combination"));
+        console.log("TEST COMBINATION", this.experiments[_experiment].combination);
         for(var i = 0; i < this.experiments[_experiment].sections.length; i++){
             console.log("TEST VARIATIONS", this.experiments[_experiment].sections[i].name + " - " + utmx("variation_number", this.experiments[_experiment].sections[i].name));
         }
@@ -123,14 +123,31 @@ GWO_helper = {
     }, 
     
     _resolveVariations: function(_experiment){
+	
+		// Get the forced variations
+        var experiments = document.location.hash.substr(1).split("&");
+        if(experiments != undefined && experiments[0] != ""){
+            var forcedTests = {};
+            for (var i = 0; i < experiments.length ; i++){ 
+                var experiment = experiments[i].split("=");
+                forcedTests[experiment[0]] = {};
+
+                var variations = experiment[1].split("-");
+
+                for(var j = 0; j < variations.length; j++){
+                    forcedTests[experiment[0]][j] = variations[j];				
+                }
+
+            }
+        }
 
         // Request the variations with the utmx function
-        for(var i = 0; i < this.experiments[_experiment].sections.length; i++){
-            this.experiments[_experiment].sections[i].variation = utmx("variation_number", this.experiments[_experiment].sections[i].name);
-        }
+        for(var k = 0; k < this.experiments[_experiment].sections.length; k++){
+            this.experiments[_experiment].sections[k].variation = (forcedTests == undefined) ? utmx("variation_number", this.experiments[_experiment].sections[k].name) : forcedTests[_experiment][k];
+        }	
         
         // Set the combination for this experiment
-        this.experiments[_experiment].combination = utmx("combination");
+        this.experiments[_experiment].combination = (forcedTests == undefined) ? utmx("combination") : "Forced Variations Used. No combination available";
         
         // ADD CLASS TO THE BODY  state-test(experiment)_(section)-(variation)
         var b = document.getElementsByTagName("body")[0];
