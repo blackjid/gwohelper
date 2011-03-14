@@ -31,5 +31,13 @@ This is an object that has as many object inside as you need to experiment. The 
 
 	<script src="/gwo_helper.js"></script>
 
+
+Testing the variations
+=====================
+You can add a hash to the url to force the variation for each experiment
+
+`http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0`
+where the values are the variation of each section for that experiment
+
 Dealing with GWO interface to create the variations
 ===================================================
