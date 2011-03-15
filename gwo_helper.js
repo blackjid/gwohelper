@@ -82,10 +82,15 @@ GWO_helper = {
      */
     track: function(_experiment, _type){
 	
-		if(!this.debug)
-			 if(_type == "test" || _type == "goal")
-			 _gaq.push(['gwo._trackPageview', '/' + this.experiments[_experiment].id + '/' + _type]);
-
+	if(!this.debug){
+            if(_type == "test" || _type == "goal")
+                _gaq.push(['gwo._trackPageview', '/' + this.experiments[_experiment].id + '/' + _type]);
+        }
+        else{
+            console.log("******************************************************************");
+            console.log("TRACKING EXPERIMENT", _experiment, _type);
+            console.log("******************************************************************");
+        }
     },
     
     /***************************/
