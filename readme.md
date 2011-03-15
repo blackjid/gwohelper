@@ -24,9 +24,12 @@ Setup
 
 	This is an object that has as many object inside as you need to experiment. The following is the structure of each experiment:
 
-	`experiments.experiment1.id: "00000000"` 
+	`experiments.experiment1.id: "00000000"`
+	 
 	Is the id that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)
-	`experiments.experiment1.sections: [{name:'name1'},{name:'name2'}]` 
+	
+	`experiments.experiment1.sections: [{name:'name1'},{name:'name2'}]`
+	
 	Is an array with the sections of the experiments and it's names the same you defined in the step 9 of the step by step guide
 
 2. Insert the script into your code, you can use it at the begining or end of your code
@@ -49,12 +52,10 @@ This is a step by step guide to create the experiments in the GWO website
 7. 	Add your url in the "Test page URL" and in the "Conversion page URL", none of these urls are going to be used so you can put whatever you want. Click "Continue"
 8.	Select *You will install and validate the JavaScripts Tags* then click **Continue**
 9. 	In the Control and Tracking script text area, find the *experiment ID* and use it in the experiment definitions in the gwo_helper.js file
-10. 	Create a file with the experiment sections definitions. It should read like this:
+10. 	Create a file with the experiment sections definitions. You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the gwo_helper.js file It should read like this:
 	
 		<!-- utmx section name="Section1" -->
 		<!-- utmx section name="Section2" -->
-
-	You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the gwo_helper.js file
 
 11. 	Click in the link **Test page not accessible? Try offline validation**, then select to browse the *Test Page* location and select the file you created in the step 10.
 	It will return a few errors but it should detect the 2 sections you defined. Click **continue** in the window.
