@@ -90,7 +90,7 @@ Testing the variations
 ----------------------
 You can add a hash to the url to force the variation for each experiment
 
-`http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0`
+	http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0
 where the values are the variation of each section for that experiment
 
 ToDO
