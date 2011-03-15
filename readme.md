@@ -29,9 +29,9 @@ Setup
 
 2. Insert the script into your code, you can use it at the begining or end of your code
 
-	<script src="/gwo_helper.js"></script>
+	`<script src="/gwo_helper.js"></script>`
 
-3. Create the variations in the GWO website (see next title)
+3. Create the variations in the GWO website (see next section)
 
 
 Dealing with GWO interface to create the variations
