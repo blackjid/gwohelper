@@ -10,7 +10,7 @@ It also provides a way to make changes to the page based on the experiments vari
 
 Setup
 -----
-1.	Config the helper changing the values of the first to objects in the file.
+1.	Config the helper changing the values in the *gwo_helper.config.js* file.
 
 	    account: "UA-XXXXXXX-X" 
 	
@@ -33,9 +33,10 @@ Setup
 	**experiment1.id** Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)  
 	**experiment1.sections** Is an array with the sections of the experiments and it's names, the same you defined in the step 9 of the step by step guide
 
-2.    Insert the script into your code, you can use it at the begining or end of your code
+2.    Insert the script and the config script into your code, you can use it at the begining or end of your code depending when your are going to call the methods
 
 	    <script src="/gwo_helper.js"></script>
+    	    <script src="/gwo_helper.config.js"></script>
 
 3.    Create the variations in the GWO website (see next section)
 
@@ -93,8 +94,11 @@ You can add a hash to the url to force the variation for each experiment
 	http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0
 where the values are the variation of each section for that experiment
 
+Example
+-------
+Try this [live example](http://jsfiddle.net/blackjid/FKJHf/ "Example on jsfiddle.net") hosted in jsfiddle.net
+
 ToDO
 ----
 *	Support GWO variation previews
-*	Separate configuration into another file
 
