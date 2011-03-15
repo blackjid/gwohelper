@@ -1,13 +1,13 @@
 /**
 * Google Web Optimizer account UA-XXXXXXX-X
 */
-GWO_helper.account: "UA-XXXXXXX-X",
+GWO_helper.account: "UA-XXXXXXX-X";
     
 /**
 * When true a summary of the experiment will be showed in the consol
 * Also the tranking test and goals are omitted
 */
-GWO_helper.debug: true, 
+GWO_helper.debug: true;
 
 /**
 * Definition of the experiments
