@@ -1,4 +1,3 @@
-
 Google Web Optimizer Multi Experiment Helper
 ============================================
 I wrote this helper to create multiple experiments with GWO in my startup [voxound.com](http://www.voxound.com "Voxound"), I hope you can use it too.
@@ -31,7 +30,7 @@ Setup
 
 	This is an object that has as many object inside as you need to experiment. 
 
-	**experiment1.id** Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)
+	**experiment1.id** Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)  
 	**experiment1.sections** Is an array with the sections of the experiments and it's names, the same you defined in the step 9 of the step by step guide
 
 2.    Insert the script into your code, you can use it at the begining or end of your code
