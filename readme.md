@@ -12,8 +12,8 @@ Setup
 -----
 1.	Config the helper changing the values of the first to objects in the file.
 
-	`account: "UA-XXXXXXX-X"`
-
+	`account: "UA-XXXXXXX-X"`  
+	
 	This is the google web optimizer account ID your are going to use
 
 	`debug: bool`
@@ -24,8 +24,10 @@ Setup
 
 	This is an object that has as many object inside as you need to experiment. The following is the structure of each experiment:
 
-		experiments.experiment1.id: "00000000" Is the id that GWO provide for this experiment
-		experiments.experiment1.sections: [{name:'name1'},{name:'name2'}]  Is an array with the sections of the experiments and it's names
+		`experiments.experiment1.id: "00000000"` 
+		Is the id that GWO provide for this experiment (Step 8 in the GWO interface step by step guide)
+		`experiments.experiment1.sections: [{name:'name1'},{name:'name2'}]` 
+		Is an array with the sections of the experiments and it's names the same you defined in the step 9 of the step by step guide
 
 2. Insert the script into your code, you can use it at the begining or end of your code
 
@@ -60,11 +62,34 @@ This is a step by step guide to create the experiments in the GWO website
 13. 	Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on "Save and Continue"
 14. 	Launch the experiment. You can launch the experiment with the debug property in gwo_helper set to true. This way your are not going to send any data until you change it to false in your production environment
 
+Tracking the test and the goals
+-------------------------------
+There're two methods to help you track your experiments
+
+	loadControl(_experiment, _startExperiment)
+	
+This method create load the control script from google web optimizer. You should call it only once for each experiment.  
+**_experiment** is the experiment name you setup in the experiments object  
+**_startExperiment** set it to *true* if you want to track the begining of the test right after the control is loaded. It's the same than calling the track(_experiment, "test") after calling the loadControl methods  
+	//Example:  
+	 
+	GWO_helper.loadControl("experiment1", true);  
+
+`track(_experiment, _type)`
+This method will track the experiment. It can track the begining or the end (goal) of the experiment.  
+**_experiment** is the experiment name you setup in the experiments object  
+**_type** should be "test" or "goal" depending if you want to track the begining or the end of the experiment  
+	//Example:
+	
+	GWO_helper.track("experiment1", "test"); //for begining or
+	
+	GWO_helper.track("experiment1", "goal"); // for the goal
+
 Testing the variations
 ----------------------
 You can add a hash to the url to force the variation for each experiment
 
-`http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0`
+`http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0`  
 where the values are the variation of each section for that experiment
 
 ToDO
