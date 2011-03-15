@@ -24,10 +24,10 @@ Setup
 
 	This is an object that has as many object inside as you need to experiment. The following is the structure of each experiment:
 
-		`experiments.experiment1.id: "00000000"` 
-		Is the id that GWO provide for this experiment (Step 8 in the GWO interface step by step guide)
-		`experiments.experiment1.sections: [{name:'name1'},{name:'name2'}]` 
-		Is an array with the sections of the experiments and it's names the same you defined in the step 9 of the step by step guide
+	`experiments.experiment1.id: "00000000"` 
+	Is the id that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)
+	`experiments.experiment1.sections: [{name:'name1'},{name:'name2'}]` 
+	Is an array with the sections of the experiments and it's names the same you defined in the step 9 of the step by step guide
 
 2. Insert the script into your code, you can use it at the begining or end of your code
 
@@ -43,24 +43,25 @@ This is a step by step guide to create the experiments in the GWO website
 1. 	Go to [Google Web Optimizer website](http://www.google.com/websiteoptimizer "Google Web Optimizer") 
 2. 	Select the account that your are going to use
 3. 	Create a new experiment
-4. 	Select a Multivariate Experiment
-5. 	Check the "I've completed the steps above and...." checkbox and click "Create"
+4. 	Select a *Multivariate Experiment*
+5. 	Check the *I've completed the steps above and....* checkbox and click **Create**
 6. 	Name your experiment
 7. 	Add your url in the "Test page URL" and in the "Conversion page URL", none of these urls are going to be used so you can put whatever you want. Click "Continue"
-8. 	In the Control and Tracking script text area, find the experiment ID and use it in the experiment definitions in the gwo_helper.js file
-9. 	Create a file with the experiment sections definitions. It should read like this:
+8.	Select *You will install and validate the JavaScripts Tags* then click **Continue**
+9. 	In the Control and Tracking script text area, find the *experiment ID* and use it in the experiment definitions in the gwo_helper.js file
+10. 	Create a file with the experiment sections definitions. It should read like this:
 	
 		<!-- utmx section name="Section1" -->
 		<!-- utmx section name="Section2" -->
 
 	You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the gwo_helper.js file
 
-10. 	Click in the link "Test page not accessible? Try offline validation", then select to browse the Test Page location and select the file you created in the step 9.
-	It will return a few errors but it should detect the 2 sections you defined. Click continue in the window.
-11. 	Click contiune. Don't worry for all those errors.
-12. 	Confirm clicking in "Contiune Anyway"
-13. 	Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on "Save and Continue"
-14. 	Launch the experiment. You can launch the experiment with the debug property in gwo_helper set to true. This way your are not going to send any data until you change it to false in your production environment
+11. 	Click in the link **Test page not accessible? Try offline validation**, then select to browse the *Test Page* location and select the file you created in the step 10.
+	It will return a few errors but it should detect the 2 sections you defined. Click **continue** in the window.
+12. 	Click **Contiune**. Don't worry for all those errors.
+13. 	Confirm clicking in **Contiune Anyway"**
+14. 	Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on **Save and Continue**
+15. 	Launch the experiment. You can launch the experiment with the debug property in gwo_helper set to true. This way your are not going to send any data until you change it to false in your production environment
 
 Tracking the test and the goals
 -------------------------------
@@ -71,7 +72,7 @@ There're two methods to help you track your experiments
 This method create load the control script from google web optimizer. You should call it only once for each experiment.  
 **_experiment** is the experiment name you setup in the experiments object  
 **_startExperiment** set it to *true* if you want to track the begining of the test right after the control is loaded. It's the same than calling the track(_experiment, "test") after calling the loadControl methods  
-	//Example:  
+Example:  
 	 
 	GWO_helper.loadControl("experiment1", true);  
 
@@ -79,7 +80,7 @@ This method create load the control script from google web optimizer. You should
 This method will track the experiment. It can track the begining or the end (goal) of the experiment.  
 **_experiment** is the experiment name you setup in the experiments object  
 **_type** should be "test" or "goal" depending if you want to track the begining or the end of the experiment  
-	//Example:
+Example:
 	
 	GWO_helper.track("experiment1", "test"); //for begining or
 	
