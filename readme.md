@@ -55,9 +55,9 @@ This is a step by step guide to create the experiments in the GWO website
 8.	Select *You will install and validate the JavaScripts Tags* then click **Continue**
 9. 	In the Control and Tracking script text area, find the *experiment ID* and use it in the experiment definitions in the gwo_helper.js file
 10. 	Create a file with the experiment sections definitions. You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the gwo_helper.js file It should read like this:
-	
-	    <!-- utmx section name="Section1" -->
-	    <!-- utmx section name="Section2" -->
+
+            <!-- utmx section name="Section1" -->
+            <!-- utmx section name="Section2" -->
 
 11. 	Click in the link **Test page not accessible? Try offline validation**, then select to browse the *Test Page* location and select the file you created in the step 10.
 	It will return a few errors but it should detect the 2 sections you defined. Click **continue** in the window.
