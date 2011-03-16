@@ -101,4 +101,5 @@ Try this [live example](http://jsfiddle.net/blackjid/FKJHf/ "Example on jsfiddle
 ToDO
 ----
 *	Support GWO variation previews
+*       Add callback to the loadControl method
 
