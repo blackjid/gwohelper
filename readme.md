@@ -36,7 +36,7 @@ Setup
 2.    Insert the script and the config script into your code, you can use it at the begining or end of your code depending when your are going to call the methods
 
     	     <script src="/gwo_helper.js"></script>
-	     <script src="/gwo_helper.config.js"></script>
+	      <script src="/gwo_helper.config.js"></script>
 
 3.    Create the variations in the GWO website (see next section)
 
