@@ -12,11 +12,11 @@ Setup
 -----
 1.	Config the helper changing the values in the *gwo_helper.config.js* file.
 
-	    account: "UA-XXXXXXX-X" 
+        account: "UA-XXXXXXX-X" 
 	
-	This is the google web optimizer account ID your are going to use
-
-	    debug: bool
+    This is the google web optimizer account ID your are going to use
+        
+        debug: bool
 
 	If it's true, the script will write some logs in the browsers console and it will not send the tracking beacons, that way you can test in your development environment without sending data to your production GWO account
 
@@ -45,7 +45,7 @@ Dealing with GWO interface to create the variations
 ---------------------------------------------------
 This is a step by step guide to create the experiments in the GWO website
 
-1. 	Go to [Google Web Optimizer website](http://www.google.com/websiteoptimizer "Google Web Optimizer") 
+1.  Go to [Google Web Optimizer website](http://www.google.com/websiteoptimizer "Google Web Optimizer") 
 2. 	Select the account that your are going to use
 3. 	Create a new experiment
 4. 	Select a *Multivariate Experiment*
@@ -53,35 +53,37 @@ This is a step by step guide to create the experiments in the GWO website
 6. 	Name your experiment
 7. 	Add your url in the "Test page URL" and in the "Conversion page URL", none of these urls are going to be used so you can put whatever you want. Click "Continue"
 8.	Select *You will install and validate the JavaScripts Tags* then click **Continue**
-9. 	In the Control and Tracking script text area, find the *experiment ID* and use it in the experiment definitions in the gwo_helper.js file
-10. 	Create a file with the experiment sections definitions. You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the gwo_helper.js file It should read like this:
+9.  In the Control and Tracking script text area, find the *experiment ID* and use it in the experiment definitions in the gwo_helper.js file
+10. Create a file with the experiment sections definitions. You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the gwo_helper.js file It should read like this:
 
             <!-- utmx section name="Section1" -->
             <!-- utmx section name="Section2" -->
 
-11. 	Click in the link **Test page not accessible? Try offline validation**, then select to browse the *Test Page* location and select the file you created in the step 10.
+11. Click in the link **Test page not accessible? Try offline validation**, then select to browse the *Test Page* location and select the file you created in the step 10.
 	It will return a few errors but it should detect the 2 sections you defined. Click **continue** in the window.
-12. 	Click **Contiune**. Don't worry for all those errors.
-13. 	Confirm clicking in **Contiune Anyway"**
-14. 	Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on **Save and Continue**
-15. 	Launch the experiment. You can launch the experiment with the debug property in gwo_helper set to true. This way your are not going to send any data until you change it to false in your production environment
+12. Click **Contiune**. Don't worry for all those errors.
+13. Confirm clicking in **Contiune Anyway"**
+14. Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on **Save and Continue**
+15. Launch the experiment. You can launch the experiment with the debug property in gwo_helper set to true. This way your are not going to send any data until you change it to false in your production environment
 
 Tracking the test and the goals
 -------------------------------
 There're two methods to help you track your experiments
 
 ###loadControl(*String* _experiment, *Boolean* _startExperiment)###
-This method create load the control script from google web optimizer. You should call it only once for each experiment.  
-**\_experiment** is the experiment name you setup in the experiments object
+This method loads the control script from google web optimizer. You should call it only once for each experiment.  
+**\_experiment** is the experiment name you setup in the experiments object.  
 **\_startExperiment** set it to *true* if you want to track the begining of the test right after the control is loaded. It's the same than calling the track(_experiment, "test") after calling the loadControl methods  
-Example:  
+
+Example: 
 	 
 	GWO_helper.loadControl("experiment1", true);  
 
 ###track(*String* _experiment, *String* _type)###
 This method will track the experiment. It can track the begining or the end (goal) of the experiment.  
-**\_experiment** is the experiment name you setup in the experiments object
-**\_type** should be "test" or "goal" depending if you want to track the begining or the end of the experiment  
+**\_experiment** is the experiment name you setup in the experiments object.  
+**\_type** should be "test" or "goal" depending if you want to track the begining or the end of the experiment
+
 Example:
 	
 	GWO_helper.track("experiment1", "test"); //for begining or	
