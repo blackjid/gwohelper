@@ -10,36 +10,33 @@ It also provides a way to make changes to the page based on the experiments vari
 
 Setup
 -----
-1.	Config the helper changing the values in the *gwo_helper.config.js* file.
 
-        account: "UA-XXXXXXX-X" 
-	
-    This is the google web optimizer account ID your are going to use
+Insert the following snippet in your page and modifie de values for your needs. You can use it at the begining or end of your code depending when your are going to call the methods
+
+        <script>
+        GWO_helper.account = "UA-XXXXXXX-X";
+        GWO_helper.debug = true; /* or false */
+        GWO_helper.init([
+                {id:"xxxxxxxxxx", name:"download", track:false},
+                {id:"xxxxxxxxxx", name:"fork", track:false} /* n experiments */
+            ],
+            function(){/*callback code*/});                    
+        </script>
+        <script src="gwohelper.js"/>
+
+**GWO_helper.account** *string*  
+This is the google web optimizer account ID your are going to use. *i.e "UA-XXXXXXX-X"*
+
+**GWO_helper.debug** *bool*  
+If it's true, the script will write some logs in the browsers console and it will not send the tracking beacons	
+
+**GWO_helper.init(*experiments*)**  *experimentDef*  
+This is the initialization method. You pass an array with as many object as experiments you want to test    
         
-        debug: bool
-
-	If it's true, the script will write some logs in the browsers console and it will not send the tracking beacons, that way you can test in your development environment without sending data to your production GWO account
-
-	    experiments: {
-		    experiment1: {
-			    id: 0000000,
-			    sections: [{name: "section1"}, {name: "section2"}, ....]
-		    },
-		    experiment2: ....
-		}
-
-	This is an object that has as many object inside as you need to experiment. 
-
-	**experiment1.id** Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)  
-	**experiment1.sections** Is an array with the sections of the experiments and it's names, the same you defined in the step 9 of the step by step guide
-
-2.    Insert the script and the config script into your code, you can use it at the begining or end of your code depending when your are going to call the methods
-
-            <script src="/gwo_helper.js"></script>
-            <script src="/gwo_helper.config.js"></script>
-
-3.    Create the variations in the GWO website (see next section)
-
+**experimentDef**  
+**id** Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)  
+**name** This is a name you need to assign to the experiment.  
+**track** Whether the experiment should start tracking automatically or you are going to start it manually  
 
 Dealing with GWO interface to create the variations
 ---------------------------------------------------
@@ -68,40 +65,25 @@ This is a step by step guide to create the experiments in the GWO website
 
 Tracking the test and the goals
 -------------------------------
-There're two methods to help you track your experiments
+The script will add to **GWO_helper.experiments** an object for each experiment you defined in the setup.
+These objects have two methods to help you track your experiments and a few properties.
 
-###loadControl(*String* _experiment, *Boolean* _startExperiment)###
-This method loads the control script from google web optimizer. You should call it only once for each experiment.  
-**\_experiment** is the experiment name you setup in the experiments object.  
-**\_startExperiment** set it to *true* if you want to track the begining of the test right after the control is loaded. It's the same than calling the track(_experiment, "test") after calling the loadControl methods  
+###experiment.start()###
+This method start the tracking for this experiment. GWO will count this visit for the experiment statistics
+This method is called automatically if the flag track is set to TRUE in the experiment definitions passed to the init method
 
 Example: 
 	 
-	GWO_helper.loadControl("experiment1", true);  
+	GWO_helper.experiments.experiment1.start();  
 
-###track(*String* _experiment, *String* _type)###
-This method will track the experiment. It can track the begining or the end (goal) of the experiment.  
-**\_experiment** is the experiment name you setup in the experiments object.  
-**\_type** should be "test" or "goal" depending if you want to track the begining or the end of the experiment
+###experiment.goal()###
+This method will tell GWO that this visit convert for this experiment.
 
 Example:
 	
-	GWO_helper.track("experiment1", "test"); //for begining or	
-	GWO_helper.track("experiment1", "goal"); // for the goal
-
-Testing the variations
-----------------------
-You can add a hash to the url to force the variation for each experiment
-
-	http://yourdomain.com/#experiment1=0-0-0&experiment2=0-0
-where the values are the variation of each section for that experiment
+	GWO_helper.experiments.experiment1.goal();
 
 Example
 -------
-Try this [live example](http://jsfiddle.net/blackjid/FKJHf/ "Example on jsfiddle.net") hosted in jsfiddle.net
-
-ToDO
-----
-*	Support GWO variation previews
-*	Add callback to the loadControl method
+Try this [live example](http://blackjid.github.com/gwohelper/ "Example on GH Pages")
 
