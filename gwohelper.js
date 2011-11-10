@@ -1,21 +1,14 @@
 GWO_helper = {
      /**
      * Initialize all the control scripts defined in the experiment object
-     * @param   _experiments  object      initialization object contains account id, debug flag and experiments ids
-     * @param   callback      function    callback to be executed at the end of the last iteration
+     * @param   _experiments  object      initialization object contains account id, debug flag and experiments definitions
+     * @param   callback      function    callback to be executed when the last control is loaded
      */
     init: function(_experiments, callback){
         
-       /* Create an array with the keys for each experiment
-       var expArray = [];
-       for(var experiment in this.experiments) {
-           expArray.push(experiment);
-       }*/
-               
        // Load control scripts for each experiments 
        // Load the tracking script when finish
-       this._loadControls(_experiments, 0, callback);     
-       
+       this._loadControls(_experiments, 0, callback);            
     },
     
     /***************************/
@@ -24,9 +17,9 @@ GWO_helper = {
     
     /**
      * Load the GOOGLE CONTROL SCRIPTS recurively
-     * @param   _experiments    array      array with the names of the experiments defined in GWO_helper.experiments
+     * @param   _experiments    array      array with the experiments definitions provided in the init
      * @param    idx            int        index to load
-     * @param   callback        function   callback to be executed at the end of the last iteration
+     * @param   callback        function   callback to be executed when the last control is loaded
      */
     _loadControls: function(_experiments, idx, callback){
         
@@ -70,7 +63,7 @@ GWO_helper = {
             else{
                 // Load the tracking script
                 GWO_helper._loadTracking()
-                // Load the callback
+                // Call the callback
                 if(callback) callback.call();
             }
         }
@@ -98,46 +91,48 @@ GWO_helper = {
     },
     
     /**
-     * Load the GOOGLE TRACKING SCRIPT
+     * Write to the console the information to from the experiments
+     * @param   _expname    string  the name of the experiment to log to the console
+     * @param   _type       string  when tracking an experiment, whether is a test or goal tracking event 
      */
     _showlog: function(_expnmame, _type){
         
         // DEBUG
-        if(_type == undefined){
-            console.log("******************************************************************");
+        console.log("******************************************************************");
+        if(_type == 'goal'){
+            console.log("CONVERSTION TRACKED", _expnmame);
+        }
+        else if(_type == 'test'){
+            console.log("START TRACKING EXPERIMENT", _expnmame);
+        }
+        else {
             console.log("LOADED EXPERIMENT " + _expnmame, this.experiments[_expnmame]);
             console.log("TEST COMBINATION", this.experiments[_expnmame].combination);
             for(var i = 0; i < this.experiments[_expnmame].sections.length; i++){
                 console.log("TEST VARIATIONS", this.experiments[_expnmame].sections[i].name + " - " + this.experiments[_expnmame].sections[i].variation);
             }
-            console.log("******************************************************************");
         }
-        else {
-            console.log("******************************************************************");
-            console.log("TRACKING EXPERIMENT", _expnmame, _type);
-            console.log("******************************************************************");
-        }
+        console.log("******************************************************************");
         
     }, 
     
     /**
      * Get the variations for each section of the experiment. Also get the combination
+     * @param   _exp    string  the experiment definition with name, id, track flag
+     * @return          void    Create start and goal methos and other properties for the experiments
      */
     _resolveVariations: function(_exp){
     
         var name = _exp.name;
         if(!this.experiments) this.experiments = {}; 
-        
-        // Get the forced variations
-        //this._getForcedVariations();       
-        
+                
         // Set the id
         this.experiments[name] = {id: _exp.id};
         
         // Set the combination for this experiment
         this.experiments[name].combination = utmx("combination");
         
-        // Set th utmx function to the experiment
+        // Set the utmx function to the experiment
         this.experiments[name].utmx = utmx;
         
         // Set the tracking functions for the experiments
@@ -172,32 +167,7 @@ GWO_helper = {
             
             if (!b.className.match(new RegExp('(\\s|^)'+testState+'(\\s|$)'))) 
                 b.className += " "+testState;
-        }
-                
-    },
-    
-    /**
-     * Check the url hash for posibile test variations (only in debug mode)
-     */
-    _getForcedVariations: function(_experiment){
-//        if(GWO_helper.debug){
-//            var experiments = document.location.hash.substr(1).split("&");
-//            if(experiments != undefined && experiments[0] != ""){
-//                var forcedTests = {};
-//                for (var i = 0; i < experiments.length ; i++){ 
-//                    var experiment = experiments[i].split("=");
-//                    forcedTests[experiment[0]] = {};
-//
-//                    var variations = experiment[1].split("-");
-//
-//                    for(var j = 0; j < variations.length; j++){
-//                        forcedTests[experiment[0]][j] = variations[j];				
-//                    }
-//
-//                }
-//            }
-//        }
+        }           
     }
-       
 };
 
