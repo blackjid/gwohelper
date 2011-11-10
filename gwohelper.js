@@ -107,9 +107,9 @@ GWO_helper = {
         }
         else {
             console.log("LOADED EXPERIMENT " + _expnmame, this.experiments[_expnmame]);
-            console.log("TEST COMBINATION", this.experiments[_expnmame].combination);
+            console.log("COMBINATION", this.experiments[_expnmame].combination);
             for(var i = 0; i < this.experiments[_expnmame].sections.length; i++){
-                console.log("TEST VARIATIONS", this.experiments[_expnmame].sections[i].name + " - " + this.experiments[_expnmame].sections[i].variation);
+                console.log("VARIATIONS FOR SECTION", this.experiments[_expnmame].sections[i].name + " - " + this.experiments[_expnmame].sections[i].variation);
             }
         }
         console.log("******************************************************************");
