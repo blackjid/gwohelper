@@ -1,4 +1,4 @@
-GWO_helper = {
+gwohelper = {
      /**
      * Initialize all the control scripts defined in the experiment object
      * @param   _experiments  object      initialization object contains account id, debug flag and experiments definitions
@@ -50,22 +50,22 @@ GWO_helper = {
 
         var loadCallback = function(){
             // Get the variations
-            GWO_helper._resolveVariations(_experiments[idx]);
+            gwohelper._resolveVariations(_experiments[idx]);
             
             // Debug in the console
-            if(GWO_helper.debug)
-                GWO_helper._showlog(_experiments[idx].name);
+            if(gwohelper.debug)
+                gwohelper._showlog(_experiments[idx].name);
                 
             // Track this experiment if the flag is true
             if(_experiments[idx].track)
-                GWO_helper.experiments[_experiments[idx].name].start();
+                gwohelper.experiments[_experiments[idx].name].start();
 
             // Recursively load controls for each experiment
             if(idx + 1 < _experiments.length)
-                GWO_helper._loadControls(_experiments, idx + 1, callback);
+                gwohelper._loadControls(_experiments, idx + 1, callback);
             else{
                 // Load the tracking script
-                GWO_helper._loadTracking()
+                gwohelper._loadTracking()
                 // Call the callback
                 if(callback) callback.call();
             }
@@ -140,19 +140,19 @@ GWO_helper = {
         
         // Set the tracking functions for the experiments
         this.experiments[name].start = function(){
-            if(!GWO_helper.debug){
-                _gaq.push(['gwo._trackPageview', '/' + GWO_helper.experiments[name].id + '/test']);
+            if(!gwohelper.debug){
+                _gaq.push(['gwo._trackPageview', '/' + gwohelper.experiments[name].id + '/test']);
             }
             else{
-                GWO_helper._showlog(name, "test");
+                gwohelper._showlog(name, "test");
             }
         };
         this.experiments[name].goal = function(){
-            if(!GWO_helper.debug){
-                _gaq.push(['gwo._trackPageview', '/' + GWO_helper.experiments[name].id + '/goal']);
+            if(!gwohelper.debug){
+                _gaq.push(['gwo._trackPageview', '/' + gwohelper.experiments[name].id + '/goal']);
             }
             else{
-                GWO_helper._showlog(name, "goal");
+                gwohelper._showlog(name, "goal");
             }
         };
         

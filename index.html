@@ -3,21 +3,10 @@
     <head>
         <title>Google Web Optimizer Multi Experiment Helper</title>
         
+        <!-- Bootstrap css -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
-        <script src="js/gwohelper.js"></script>
-        <script>
-        gwohelper.account = "UA-8845687-3";
-        gwohelper.debug = true;
-        gwohelper.init([
-                {id:"0555007911", name:"download", track:false},
-                {id:"0210659079", name:"fork", track:false}
-            ],
-            function(){/*callback code*/});
-        </script>
         
-        <script src="js/bootstrap.js"></script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -28,10 +17,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Project name</a>
+                    <a class="brand" href="#">gwohelper.js</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="#"></a></li>
                             <li><a href="#about">About</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
@@ -39,6 +28,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- gwohelper -->
+        <script src="js/gwohelper.js"></script>
+        <script>
+        gwohelper.account = "UA-8845687-3";
+        gwohelper.debug = true;
+        gwohelper.init([
+                {id:"0555007911", name:"download", track:false},
+                {id:"0210659079", name:"fork", track:false}
+            ], function(){/*callback code*/});
+        </script>
+
+        <!-- Bootstrap js and dependencies-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+        <script src="js/bootstrap.js"></script>
     </body>   
 
 </html>
