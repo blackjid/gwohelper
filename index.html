@@ -8,10 +8,11 @@
         <!-- Bootstrap css -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="js/prettify/prettify.css" rel="stylesheet">
         
     </head>
-    <body>
-        <div class="navbar navbar-fixed-top">
+    <body data-spy="scroll">
+        <div id="navbar" class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -22,53 +23,392 @@
                     <a class="brand" href="#">gwohelper.js</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#usage">Usage</a></li>
-                            <li><a href="#guide">Guide</a></li>
-                            <li><a href="#download">Download</a></li>
+                            <li class="active"><a href="#summary">Summary</a></li>
+                            <li><a href="#setup">Code Setup</a></li>
+                            <li><a href="#gwo">GWO Setup</a></li>
+                            <li><a href="#experiments">Experiments</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="#about">About</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
 
-        <div class="hero-unit">
-            <h1>Google Web Optimizer Helper</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-large">Learn more »</a></p>
-        </div>
-
         <div class="container">
-            <div id="usage">
+            <div class="hero-unit">
+                <h1>Google Web Optimizer Helper</h1>
+                <p>I wrote this helper to create multiple experiments with GWO in my startup <a href="http://voxound.com" target="_blank">voxound.com</a>, here is the code for you to fork, give feedback and use it in your own projects.</p>
+            </div>
+
+            <div id="summary" class="section">
                 <div class="page-header">
-                    <h1>Usage <small>12 columns with a responsive twist</small></h1>
+                    <h1>Summary <small>What it's all about?</small></h1>
                 </div>
-                <div class="page-body">
-                    <pre class="prettyprint linenums">
-                      <div>
-                        GWO_helper.account = "UA-XXXXXXX-X";
-                        GWO_helper.debug = true; /* or false */
-                        GWO_helper.init([
-                                {id:"xxxxxxxxxx", name:"download", track:false},
-                                {id:"xxxxxxxxxx", name:"fork", track:false} /* n experiments */
-                            ],
-                            function(){/*callback code*/});                    
+                <p>
+                    This helper allow you to load dynamically the control script and the tracking script provided by GWO, as well to push the tracking beacon to start of the experiment and for the goal.
+                </p>
+                <p>
+                    It also provides a way to make changes to the page based on the experiments variantions delivered by GWO. This can be done using <strong>CSS</strong> or <strong>javascript</strong>.
+                </p>
+            </div>
+
+            <div id="setup" class="section">
+                <div class="page-header">
+                    <h1>Code Setup</h1>
+                </div>
+                <p>Insert the following snippet in your page and modify de values for your needs. Use it at the end of the page for faster loading</p>
+<pre class="prettyprint linenums">
+&lt;script src="gwohelper.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    gwohelper.account = "UA-XXXXXXX-X";
+    gwohelper.debug = true; /* or false */
+    gwohelper.init([
+            {id:"xxxxxxxxxx", name:"experimentname1", track:false},
+            {id:"xxxxxxxxxx", name:"experimentname2", track:false} /* n experiments */
+        ],
+        function(){/*callback code*/});                    
+&lt;/script&gt;
+</pre>
+                <p>
+                    <h4>gwohelper.account <small>string</small></h4>
+                    This is the google web optimizer account ID your are going to use. i.e "UA-XXXXXXX-X"
+                </p>
+                <p>
+                    <h4>gwohelper.debug <small>bool</small></h4>
+                    If it's true, the script will write some logs in the browsers console and it will not send the tracking beacons
+                </p>
+                <p>
+                    <h4>gwohelper.init(experiments, callback) <small>experiment, function</small></h4>
+                    This is the initialization method. You pass an array with as many object as experiments you want to test
+                </p>
+                <p>
+                    <h4>Experiment</h4>
+                    <ul class="unstyled">
+                        <li>
+                            <strong>id</strong> Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)
+                        </li>
+                        <li>
+                            <strong>name</strong> This is a name you need to assign to the experiment.
+                        </li>
+                        <li>
+                            <strong>track</strong> Whether the experiment should start tracking automatically or you are going to start it manually
+                        </li>
+                    </ul>
+                </p>
+            </div>
+
+            <div id="gwo" class="section">
+                <div class="page-header">
+                    <h1>Google web optimizer setup</h1>
+                </div>
+                <ul class="unstyled">
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                1. Go to <a href="http://www.google.com/gwo" target="_blank">Google Web Optimizer website</a>
+                            </div>
                         </div>
-                        <div src="gwohelper.js"/>
-                    </pre>
-                </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                2. Select the account that your are going to use
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                            3. Create a new experiment
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step3" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step3.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step3" class="modal hide">
+                            <img src="img/steps/step3.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                            4. Select a Multivariate Experiment
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                    <li class="span2">
+                                        <a href="#step4" class="thumbnail" data-toggle="modal">
+                                            <img src="img/steps/step4.png" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step4" class="modal hide">
+                            <img src="img/steps/step4.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                5. Check the I've completed the steps above and.... checkbox and click Create
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step5" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step5.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step5" class="modal hide">
+                            <img src="img/steps/step5.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                <p>6. Name your experiment</p>
+
+                                <p>7. Add your url in the "Test page URL" and in the "Conversion page URL", none of these urls are going to be used so you can put whatever you want. Click "Continue"</p>
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step67" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step6-7.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step67" class="modal hide">
+                            <img src="img/steps/step6-7.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                8. Select You will install and validate the JavaScripts Tags then click Continue 
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step8" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step8.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step8" class="modal hide">
+                            <img src="img/steps/step8.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">    
+                                9. In the Control and Tracking script text area, find the experiment ID and use it in the experiment definitions in the gwohelper.js file
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step9" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step9.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step9" class="modal hide">
+                            <img src="img/steps/step9.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                10. Create a file with the experiment sections definitions. You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the init method of gwohelper. It should read like this:
+                            </div>
+                            <div class="span6">
+<pre>
+&lt;!-- utmx section name="Section1" --&gt;
+&lt;!-- utmx section name="Section2" --&gt;
+</pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                11. Click in the link Test page not accessible? Try offline validation, then select to browse the Test Page location and select the file you created in the step 10. It will return a few errors but it should detect the 2 sections you defined. Click continue in the window.
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step11a" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step11a.png" alt="">
+                                    </a>
+                                  </li>
+                                  <li class="span2">
+                                    <a href="#step11b" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step11b.png" alt="">
+                                    </a>
+                                  </li>
+                                  <li class="span2">
+                                    <a href="#step11c" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step11c.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step11a" class="modal hide">
+                            <img src="img/steps/step11a.png" alt="">
+                        </div>
+                        <div id="step11b" class="modal hide">
+                            <img src="img/steps/step11b.png" alt="">
+                        </div>
+                        <div id="step11c" class="modal hide">
+                            <img src="img/steps/step11c.png" alt="">
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                12. Click Continue. Don't worry for all those errors.
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step12" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step12.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step12" class="modal hide">
+                            <img src="img/steps/step12.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                13. Confirm clicking in "Continue Anyway"
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step13" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step13.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step13" class="modal hide">
+                            <img src="img/steps/step13.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                14. Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on Save and Continue
+                            </div>
+                            <div class="span6">
+                                <ul class="thumbnails">
+                                  <li class="span2">
+                                    <a href="#step14" class="thumbnail" data-toggle="modal">
+                                      <img src="img/steps/step14.png" alt="">
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="step14" class="modal hide">
+                            <img src="img/steps/step14.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="span6">
+                                15. Launch the experiment. You can launch the experiment with the debug property in gwohelper set to true. This way your are not going to send any data until you change it to false in your production environment
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
 
-            <div id="guide">
+            <div id="experiments" class="section">
                 <div class="page-header">
-                    <h1>Usage <small>12 columns with a responsive twist</small></h1>
+                    <h1>The experiments <small>Start tracking and set track the goal</small></h1>
                 </div>
+                <p>
+                    The script will create an object for each experiment you defined in the setup in the <strong>gwohelper.experiments</strong> object. These objects have two methods to help you track your experiments and a few properties.
+                </p>
+                <p>
+                    <h3>
+                        experiment.start()
+                    </h3>
+                    <p>
+                        This method start the tracking for this experiment. GWO will count this visit for the experiment statistics This method is called automatically if the flag track is set to TRUE in the experiment definitions passed to the init method
+                    </p>
+<pre>
+gwohelper.experiments.experiment1.start(); 
+</pre>
+                </p>
+                <p>
+                    <h3>
+                        experiment.goal()
+                    </h3>
+                    <p>
+                        This method will tell GWO that this visit convert for this experiment.
+                    </p>
+<pre>
+gwohelper.experiments.experiment1.goal(); 
+</pre>
+                </p>
+                <p>
+                    <h3>
+                        experiment.goal()
+                    </h3>
+                    <p>
+                        This method will tell GWO that this visit convert for this experiment.
+                    </p>
+<pre>
+gwohelper.experiments.experiment1.goal(); 
+</pre>
+                </p>
             </div>
 
-            <div id="download">
+            <div id="demo" class="section">
                 <div class="page-header">
-                    <h1>Usage <small>12 columns with a responsive twist</small></h1>
+                    <h1>Demo</h1>
                 </div>
+                <p>
+                    This page is using gwohelper. If you load it on an incognito browser you will see that each time there are some differences. This modifications are applied via javascript/css and are based on the variations google defined for each experiment.
+                </p>
+            </div>
+
+            <div id="about" class="section">
+                <div class="page-header">
+                    <h1>About</h1>
+                </div>
+                <p>
+                    The helper was tested in  FF 3.5+, Chrome 10+, IE7+
+                </p>
+                <p>
+                    Any contribution and feedback is welcome. Please use twitter @blackjid or the github issues section for any feedback.
             </div>
         </div>
 
@@ -85,7 +425,10 @@
 
         <!-- Bootstrap js and dependencies-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+        <script src="js/prettify/prettify.js"></script>
         <script src="js/bootstrap.js"></script>
+        
+        <script src="js/app.js"></script>
     </body>   
 
 </html>
