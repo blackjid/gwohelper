@@ -1,7 +1,37 @@
 body{
 	padding-top: 60px;
 }
-
+#download{
+	display: none;
+}
 .section{
 	padding-top:40px;
 }
+
+.hero-unit p {
+	margin-top:20px;
+}
+
+.btn-xlarge{
+	font-size: 20px;
+	font-weight: normal;
+	padding: 14px 24px;
+	margin-right: 10px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.forkme{
+	position: absolute;
+	right: 0;
+	top: 40px;
+}
+
+.forkme img{
+	display: none;
+}
+
+.gwo-fork-button-0 .forkme .red{display:block;}
+.gwo-fork-button-1 .forkme .black{display:block;}
+.gwo-fork-button-2 .forkme .blue{display:block;}
