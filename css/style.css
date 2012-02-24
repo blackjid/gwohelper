@@ -1,6 +1,10 @@
 body{
 	padding-top: 60px;
 }
+
+.step{
+	width:auto;
+}
 #download{
 	/*display: none;*/
 }
