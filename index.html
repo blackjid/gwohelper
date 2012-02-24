@@ -47,8 +47,8 @@
                 <h1>Google Web Optimizer Helper</h1>
                 <p>I wrote this helper to create multiple experiments with GWO in my startup <a href="http://voxound.com" target="_blank">voxound.com</a>, here is the code for you to fork, give feedback and use it in your own projects.</p>
                 <p>
-                    <a href="" class="btn btn-xlarge">View on github</a>
-                    <a id="download" href="" class="btn btn-xlarge">&nbsp;</a>
+                    <a href="http://github.com/blackjid/gwohelper" target="_blank" class="btn btn-xlarge">View on github</a>
+                    <a id="download" href="https://github.com/downloads/blackjid/gwohelper/gwohelper.min.js" class="btn btn-xlarge">&nbsp;</a>
                 </p>
             </div>
 
@@ -374,9 +374,7 @@
                     <p>
                         This method start the tracking for this experiment. GWO will count this visit for the experiment statistics This method is called automatically if the flag track is set to TRUE in the experiment definitions passed to the init method
                     </p>
-<pre>
-gwohelper.experiments.experiment1.start(); 
-</pre>
+                    <code class="prettyprint">gwohelper.experiments.experiment1.start()</code>
                 </p>
                 <p>
                     <h3>
@@ -385,9 +383,7 @@ gwohelper.experiments.experiment1.start();
                     <p>
                         This method will tell GWO that this visit convert for this experiment.
                     </p>
-<pre>
-gwohelper.experiments.experiment1.goal(); 
-</pre>
+                    <code class="prettyprint">gwohelper.experiments.experiment1.goal()</code>
                 </p>
                 <p>
                     <h3>
@@ -397,9 +393,7 @@ gwohelper.experiments.experiment1.goal();
                         This is the original method exposed by the gwo script when loaded.
                         To use this method you should read <a href="http://www.gwotricks.com/2009_03_01_archive.html" target="_blank">this blog post from gwotricks.com</a>
                     </p>
-<pre>
-gwohelper.experiments.experiment1.utmx(); 
-</pre>
+                    <code class="prettyprint">gwohelper.experiments.experiment1.utmx()</code>
                 </p>
                 <p>
                     <h3>
@@ -409,9 +403,7 @@ gwohelper.experiments.experiment1.utmx();
                         An array with all the sections defined for this experiment.
                         This sections are an object with the name of the section and the current variation.
                     </p>
-<pre>
-gwohelper.experiments.experiment1.sections; 
-</pre>
+                    <code class="prettyprint">gwohelper.experiments.experiment1.sections</code>
                 </p>
                 <p>
                     <h3>
@@ -420,9 +412,7 @@ gwohelper.experiments.experiment1.sections;
                     <p>
                         This is a number that identify which combination of sections and its variations is currently being displayed. <a href="http://www.gwotricks.com/2009_03_01_archive.html" target="_blank">read more</a>
                     </p>
-<pre>
-gwohelper.experiments.experiment1.combination; 
-</pre>
+                    <code class="prettyprint">gwohelper.experiments.experiment1.combination</code>
                 </p>
             </div>
 
