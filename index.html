@@ -48,7 +48,7 @@
                 <p>I wrote this helper to create multiple experiments with GWO in my startup <a href="http://voxound.com" target="_blank">voxound.com</a>, here is the code for you to fork, give feedback and use it in your own projects.</p>
                 <p>
                     <a href="" class="btn btn-xlarge">View on github</a>
-                    <a id="download" href="" class="btn-xlarge">Download gwohelper.js</a>
+                    <a id="download" href="" class="btn btn-xlarge">&nbsp;</a>
                 </p>
             </div>
 
@@ -488,25 +488,82 @@ gwohelper.init([
                 <p>
                     <h4>Experiment "download"</h4>
                     <div class="row">
-
+                        <div class="span3">
+                            <h6>Variation Button 0 - Copy 0</h6>  
+                            <a href="" class="btn btn-primary btn-xlarge">Download gwohelper.js</a>  
+                        </div>
+                        <div class="span3">
+                            <h6>Variation Button 1 - Copy 0</h6>
+                            <a href="" class="btn btn-xlarge">Download gwohelper.js</a>
+                        </div>
+                        <div class="span3">
+                            <h6>Variation Button 2 - Copy 0</h6>
+                            <a href="" class="btn btn-success btn-xlarge">Download gwohelper.js</a>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="span3">
+                            <h6>Variation Button 0 - Copy 1</h6>  
+                            <a href="" class="btn btn-primary btn-xlarge">Download it</a>  
+                        </div>
+                        <div class="span3">
+                            <h6>Variation Button 1 - Copy 1</h6>
+                            <a href="" class="btn btn-xlarge">Download it</a>
+                        </div>
+                        <div class="span3">
+                            <h6>Variation Button 2 - Copy 1</h6>
+                            <a href="" class="btn btn-success btn-xlarge">Download it</a>
+                        </div>
+                    </div>
+                    <p>
+                        <div class="row">
+                            <div class="span6">
+                                 <h6>The html</h6>            
+<pre class="prettyprint">
+&lt;a id="download" href="" class="btn btn-xlarge"&gt;&amp;nbsp;&lt;/a&gt;
+</pre>  
+                            </div>
+                            <div class="span6">
+                                <h6>The javascript</h6>            
+<pre class="prettyprint">
+_.each(gwohelper.experiments.download.sections, function(section){
+    // section button
+    if(section.name == "button"){
+        var buttons = ['btn-primary','btn','btn-success'];
+        $("#download").toggleClass(buttons[section.variation], true);
+
+    }
+    // section copy
+    if(section.name == "copy"){
+        var copies = ['Download gwohelper.js','Download it'];
+        $("#download").html(copies[section.variation]);
+
+    }
+});
+</pre>                              
+                            In this example the defined variation is show with <strong>javascript</strong>, the styling is done with <a href="http://twitter.github.com/bootstrap" target="_blank">bootstrap</a>
+                            </div>
+                        </div>
+                    </p>
 
                     <h4>Experiment "fork"</h4>
                     <div class="row">
-                        <div class="span2">
+                        <div class="span3">
                             <h6>Variation 0</h6>
                             <img class="red" src="img/fork/red.png"/ > 
                         </div>
-                        <div class="span2">
+                        <div class="span3">
                             <h6>Variation 1</h6>
                             <img class="blue" src="img/fork/blue.png"/ > 
                         </div>
-                        <div class="span2">
+                        <div class="span3">
                             <h6>Variation 2</h6>
                             <img class="black" src="img/fork/black.png"/ > 
                         </div>
+                    </div>           
+
+                    <div class="row">
                         <div class="span6">
-                            In this example the defined variation is show with <strong>css</strong>
                              <h6>The html</h6>            
 <pre class="prettyprint">
 &lt;div class="forkme"&gt;
@@ -517,7 +574,8 @@ gwohelper.init([
     &lt;/a&gt;
 &lt;/div&gt;
 </pre>  
-
+                        </div>
+                        <div class="span6">
                             <h6>The css</h6>            
 <pre class="prettyprint">
 .forkme{
@@ -532,7 +590,8 @@ gwohelper.init([
 .gwo-fork-button-0 .forkme .red{display:block;}
 .gwo-fork-button-1 .forkme .black{display:block;}
 .gwo-fork-button-2 .forkme .blue{display:block;}
-</pre>  
+</pre>                              
+                            In this example the defined variation is show with <strong>css</strong> 
                         </div>
                     </div>
                 </p>

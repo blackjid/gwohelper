@@ -32,7 +32,7 @@ changeButton = function(){
 		// section button
 		if(section.name == "button"){
 			var buttons = ['btn-primary','btn','btn-success'];
-			$("#download").toggleClass(buttons[section.variation]);
+			$("#download").toggleClass(buttons[section.variation], true);
 
 		}
 		// section copy
@@ -42,8 +42,6 @@ changeButton = function(){
 
 		}
 	});
-
-	$("#download").show();
 }
 
 // Track goal on click
