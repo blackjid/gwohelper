@@ -1,3 +1,6 @@
+More up-to-date documentation and examples on http://blackjid.github.com/gwohelper
+
+
 Google Web Optimizer Multi Experiment Helper
 ============================================
 I wrote this helper to create multiple experiments with GWO in my startup [voxound.com](http://www.voxound.com "Voxound"), I hope you can use it too.
