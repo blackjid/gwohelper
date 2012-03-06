@@ -54,13 +54,13 @@
 
             <div id="summary" class="section">
                 <div class="page-header">
-                    <h1>Summary <small>What it's all about?</small></h1>
+                    <h1>Summary <small>What is it all about?</small></h1>
                 </div>
                 <p>
-                    This helper allow you to load dynamically the control script and the tracking script provided by GWO, as well to push the tracking beacon to start of the experiment and for the goal.
+                    This helper allows you to dynamically load the control and tracking script provided by GWO, as well as to push the tracking beacon that starts the experiment and, finally, the goal.
                 </p>
                 <p>
-                    It also provides a way to make changes to the page based on the experiments variantions delivered by GWO. This can be done using <strong>CSS</strong> or <strong>javascript</strong>. This is specially useful when your site relies heavilly on ajax and you don't reload or load different pages.
+                    It also provides a way to make changes to the page based on the experiment variations delivered by GWO. This can be done using <strong>CSS</strong> or <strong>javascript</strong>. This is specially useful when your site relies heavily on ajax and you don't reload or load different pages.
                 </p>
             </div>
 
@@ -83,7 +83,7 @@
 </pre>
                 <p>
                     <h4>gwohelper.account <small>string</small></h4>
-                    This is the google web optimizer account ID your are going to use. i.e "UA-XXXXXXX-X"
+                    This is the google web optimizer account ID you're going to use. i.e "UA-XXXXXXX-X"
                 </p>
                 <p>
                     <h4>gwohelper.debug <small>bool</small></h4>
@@ -97,7 +97,7 @@
                     <h4>Experiment</h4>
                     <ul class="unstyled">
                         <li>
-                            <strong>id</strong> Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step by step guide)
+                            <strong>id</strong> Is the ID that GWO provide for this experiment (Step 9 in the GWO interface step-by-step guide)
                         </li>
                         <li>
                             <strong>name</strong> This is a name you need to assign to the experiment.
@@ -124,7 +124,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                2. Select the account that your are going to use
+                                2. Select the account that you're going to use
                             </div>
                         </div>
                     </li>
@@ -209,7 +209,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                8. Select You will install and validate the JavaScripts Tags then click Continue 
+                                8. Select "You will install and validate the JavaScripts Tags" then click Continue 
                             </div>
                             <div class="span6">
                                 <ul class="thumbnails">
@@ -247,7 +247,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                10. Create a file with the experiment sections definitions. You'll need to write one line for each section. Use the same name that you defined in the experiments definitions in the init method of gwohelper. It should read like this:
+                                10. Create a file with the experiment section definitions. You will need to write one line for each section. Use the same name that you defined in the experiment definitions in the init method of gwohelper. It should read like this:
                             </div>
                             <div class="span6">
 <pre>
@@ -260,7 +260,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                11. Click in the link Test page not accessible? Try offline validation, then select to browse the Test Page location and select the file you created in the step 10. It will return a few errors but it should detect the 2 sections you defined. Click continue in the window.
+                                11. Click in the link Test page not accessible? Try offline validation, then select to browse the Test Page location and select the file you created in the step 10. It will return a few errors, but it should detect the sections you defined. Click continue in the window.
                             </div>
                             <div class="span6">
                                 <ul class="thumbnails">
@@ -315,7 +315,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                13. Confirm clicking in "Continue Anyway"
+                                13. Confirm clicking in "Continue anyway"
                             </div>
                             <div class="span6">
                                 <ul class="thumbnails">
@@ -334,7 +334,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                14. Now you can create as many variations you want for each sections. Give them a name and you can leave the content empty. Then click on Save and Continue
+                                14. Now you can create as many variations you want for each section. Give them a name and you can leave the content empty. Then, click on Save and Continue
                             </div>
                             <div class="span6">
                                 <ul class="thumbnails">
@@ -353,7 +353,7 @@
                     <li>
                         <div class="row">
                             <div class="span6">
-                                15. Launch the experiment. You can launch the experiment with the debug property in gwohelper set to true. This way your are not going to send any data until you change it to false in your production environment
+                                15. Launch the experiment. You can launch the experiment with the debug property in gwohelper in true. This way you're not going to send any data until you change it to false in your production environment
                             </div>
                         </div>
                     </li>
@@ -372,7 +372,7 @@
                         start() <small>method</small>
                     </h3>
                     <p>
-                        This method start the tracking for this experiment. GWO will count this visit for the experiment statistics This method is called automatically if the flag track is set to TRUE in the experiment definitions passed to the init method
+                        This method starts the tracking for this experiment. GWO will count this visit for the experiment statistics. This method is called automatically if the flag track is set to TRUE in the experiment definitions passed to the init method
                     </p>
                     <code class="prettyprint">gwohelper.experiments.experiment1.start()</code>
                 </p>
@@ -410,7 +410,7 @@
                         combination <small>int</small>
                     </h3>
                     <p>
-                        This is a number that identify which combination of sections and its variations is currently being displayed. <a href="http://www.gwotricks.com/2009_03_01_archive.html" target="_blank">read more</a>
+                        This is a number that identifies which combination of sections and its variations is currently being displayed. <a href="http://www.gwotricks.com/2009_03_01_archive.html" target="_blank">read more</a>
                     </p>
                     <code class="prettyprint">gwohelper.experiments.experiment1.combination</code>
                 </p>
@@ -421,13 +421,13 @@
                     <h1>Demo</h1>
                 </div>
                 <p>
-                    This page is using gwohelper. If you load it on an incognito browser you will see that each time there are some differences. This modifications are applied via javascript/css and are based on the variations google defined for each experiment.
+                    This page is using gwohelper. If you load it on an incognito browser you will see that each time there are some differences. These modifications are applied via javascript/css and are based on the variations google defined for each experiment.
                 </p>
                 <p>
-                    For the demo I've created 2 experiments. One to test the download button conversion and the other to test the "fork me" link conversion.
+                    For the demo I've created two experiments. One to test the download button conversion and the other to test the "fork me" link conversion.
                 </p>
                 <p>
-                    This is the experiments definitions for this example.
+                    This are the experiments definitions for this example.
 <pre class="prettyprint">
 gwohelper.init([
     {id:"0555007911", name:"download", track:true},
@@ -531,7 +531,7 @@ _.each(gwohelper.experiments.download.sections, function(section){
     }
 });
 </pre>                              
-                            In this example the defined variation is show with <strong>javascript</strong>, the styling is done with <a href="http://twitter.github.com/bootstrap" target="_blank">bootstrap</a>
+                            In this example the defined variation is shown with <strong>javascript</strong>, the styling is done with <a href="http://twitter.github.com/bootstrap" target="_blank">bootstrap</a>
                             </div>
                         </div>
                     </p>
@@ -581,7 +581,7 @@ _.each(gwohelper.experiments.download.sections, function(section){
 .gwo-fork-button-1 .forkme .black{display:block;}
 .gwo-fork-button-2 .forkme .blue{display:block;}
 </pre>                              
-                            In this example the defined variation is show with <strong>css</strong> 
+                            In this example the defined variation is shown with <strong>css</strong> 
                         </div>
                     </div>
                 </p>
