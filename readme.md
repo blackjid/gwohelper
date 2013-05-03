@@ -1,3 +1,6 @@
+#DEPRECATED
+Google has shutdown the Web Optimizer service and migrated all it's functionality and probably more to Google Analytics.
+
 More up-to-date documentation and examples on http://blackjid.github.com/gwohelper
 
 
